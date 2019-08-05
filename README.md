@@ -40,6 +40,10 @@ server.listen(1234)
 
 ## Templating routes
 
+## Form data
+
+Your routes need form data parsing if you're going to accept user-submitted content!
+
 ## Tests
 
 ```
