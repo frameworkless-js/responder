@@ -18,7 +18,9 @@ exports.run = async (responder, { MockResponse }) => {
 
   const response = new MockResponse()
 
+  const start = Date.now()
   await instance({ url: '/hooks', method: 'GET' }, response)
+  const finish = Date.now()
 
   const shouldBeBody = Handlebars.compile(readFileSync('./test/fixtures/base.hbs', 'utf8'))
   Handlebars.registerPartial('content', readFileSync('./test/fixtures/templates/with_hooks.hbs', 'utf8'))
@@ -26,4 +28,6 @@ exports.run = async (responder, { MockResponse }) => {
   assert.deepStrictEqual(response.body, shouldBeBody({ hooks: [ 'onRequest', 'beforeRender' ] }))
   assert.deepStrictEqual(response.statusCode, 200)
   assert.deepStrictEqual(response.headers['Content-Type'], lookup('.html'))
+
+  return { start, finish }
 }

@@ -1,6 +1,4 @@
 const assert = require('assert')
-const { readFileSync } = require('fs')
-const { lookup } = require('mime-types')
 
 exports.description = 'A 404 is shown when file is not found'
 
@@ -15,7 +13,11 @@ exports.run = async (responder, { MockResponse }) => {
 
   const response = new MockResponse()
 
+  const start = Date.now()
   await instance({ url: '/404.txt', method: 'GET' }, response)
+  const finish = Date.now()
 
   assert.deepStrictEqual(response.statusCode, 404)
+
+  return { start, finish }
 }

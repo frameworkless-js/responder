@@ -10,10 +10,7 @@ const run = async () => {
     const { run, description } = require(file)
 
     console.log(`\n=> ${description}`)
-
-    const start = Date.now()
-    await run(responder, { MockResponse })
-    const finish = Date.now()
+    const { start, finish } = await run(responder, { MockResponse })
 
     console.log(`✔  Passed (${finish - start}ms)`)
   }

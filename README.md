@@ -21,24 +21,27 @@ const { createServer } = require('http')
 const { responder } = require('@frameworkless/bodyparser')
 
 const responderOptions = {
-  // Tell the responder where to look for static assets like images
-  staticDirectory: './public',
 
-  // Tell the responder where to look for route definition files
-  routeDirectory: './routes',
+  // If you want static files
+  static: {
+    directory: 'public'
+  },
 
-  // Tell the responder where to look for template files used in routes
-  templateDirectory: './templates'
+  // If you want dynamic routes
+  routes: {
+    directory: 'routes',
+
+    // And if you want templated routes
+    templates: {
+      directory: 'templates'
+    }
+  }
 }
 
 const server = createServer(responder(responderOptions))
 
 server.listen(1234)
 ```
-
-## The Routes object
-
-## Templating routes
 
 ## Form data
 

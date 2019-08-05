@@ -23,5 +23,7 @@ module.exports = {
 
   routes: {
     baseTemplate: 'template'
-  }
+  },
+
+  formParser: null
 }
