@@ -11,7 +11,7 @@ exports.run = async (responder, { MockResponse }) => {
 
   const response = new MockResponse()
 
-  await instance({ url: '/test.txt' }, response)
+  await instance({ url: '/test.txt', method: 'GET' }, response)
 
   assert.deepStrictEqual(response.body, readFileSync('./test/fixtures/static/test.txt', 'utf8'))
   assert.deepStrictEqual(response.statusCode, 200)

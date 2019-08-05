@@ -15,7 +15,7 @@ exports.run = async (responder, { MockResponse }) => {
 
   const response = new MockResponse()
 
-  await instance({ url: '/404.txt' }, response)
+  await instance({ url: '/404.txt', method: 'GET' }, response)
 
   assert.deepStrictEqual(response.statusCode, 404)
 }

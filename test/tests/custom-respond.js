@@ -16,7 +16,7 @@ exports.run = async (responder, { MockResponse }) => {
 
   const response = new MockResponse()
 
-  await instance({ url: '/json' }, response)
+  await instance({ url: '/json', method: 'GET' }, response)
 
   assert.deepStrictEqual(response.body, JSON.stringify({ this_is_in: 'json' }))
   assert.deepStrictEqual(response.statusCode, 200)

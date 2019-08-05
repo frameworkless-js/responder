@@ -18,7 +18,7 @@ exports.run = async (responder, { MockResponse }) => {
 
   const response = new MockResponse()
 
-  await instance({ url: '/data_hook' }, response)
+  await instance({ url: '/data_hook', method: 'GET' }, response)
 
   const shouldBeBody = Handlebars.compile(readFileSync('./test/fixtures/base.hbs', 'utf8'))
   Handlebars.registerPartial('content', readFileSync('./test/fixtures/templates/datahook.hbs', 'utf8'))

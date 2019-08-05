@@ -18,7 +18,7 @@ exports.run = async (responder, { MockResponse }) => {
 
   const response = new MockResponse()
 
-  await instance({ url: '/template' }, response)
+  await instance({ url: '/template', method: 'GET' }, response)
 
   const shouldBeBody = Handlebars.compile(readFileSync('./test/fixtures/base.hbs', 'utf8'))
   Handlebars.registerPartial('content', readFileSync('./test/fixtures/templates/templated.hbs', 'utf8'))
